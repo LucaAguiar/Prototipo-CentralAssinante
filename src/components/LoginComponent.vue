@@ -1,71 +1,61 @@
-<template> 
+<template>
     <div class="container">
         <div class="container-login">
             <b-container fluid>
-                <br>
-                <h1> Sign In </h1>
+                <br />
+                <h1>Sign In</h1>
 
-                    <br> 
+                <br />
 
-                    <b-col sm="15">
-                        <b-form-input
-                            id="input-1"
-                            v-model="login.username"
-                            :type="'email'"
-                            placeholder="Username:"
-                        ></b-form-input>
+                <b-col sm="15">
+                    <b-form-input
+                        id="input-1"
+                        :type="'email'"
+                        placeholder="Username:"
+                    ></b-form-input>
 
-                        <br> <br>
+                    <br />
+                    <br />
 
-                        <b-form-input
-                            id="input-2"
-                            v-model="login.password"
-                            placeholder="Password: "
-                            :type="'password'"
-                        ></b-form-input>
+                    <b-form-input
+                        id="input-2"
+                        placeholder="Password: "
+                        :type="'password'"
+                    ></b-form-input>
 
-                        <br>
+                    <br />
 
-                        <b-button id="submit" type="submit" variant="primary" @click="navigationMenu()">Sign In</b-button>
+                    <b-button id="submit" type="submit" variant="primary" @click="navigationMenu()">Sign In</b-button>
 
-                        <br> <br>
+                    <br />
+                    <br />
 
-                        <p> Don't have an account? <a href="#">Create an account here.</a> </p> 
-                    </b-col>
+                    <p>Don't have an account? <a href="#">Create an account here.</a></p>
+                </b-col>
             </b-container>
         </div>
     </div>
 </template>
 
 <script>
-
-    export default {
-    name: 'LoginComponent',
-    
-    data() {
-        return {
-            login: {
-                username: null,
-                password: null,
-            },
-        }
-    },
+export default {
+    name: "LoginComponent",
     methods: {
-        navigationMenu: function() {
-            this.$router.push('/menu')
-        }
-    }
-}    
+        navigationMenu: function () {
+            this.$router.push("/menu");
+        },
+    },
+};
 </script>
 
 <style scoped>
-.container{
+.container {
     max-width: 650px;
     display: flex;
     justify-content: center;
     margin-top: 50px;
 }
-.container-login{
+.container-login {
     display: flex;
     align-items: center;
     height: 90%;
@@ -80,22 +70,21 @@ input {
     height: 52px;
     align-items: center;
 }
-button{
+button {
     width: 200px;
     height: 56px;
     background-color: #363636 !important;
     border: none !important;
 }
-button:hover{
+button:hover {
     background-color: #000000 !important;
 }
-a{
+a {
     color: #000 !important;
 }
-@media(max-width: 600px){
-    .container-login{
+@media (max-width: 600px) {
+    .container-login {
         width: 98%;
     }
 }
-
 </style>

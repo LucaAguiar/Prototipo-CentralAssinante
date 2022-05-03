@@ -5,9 +5,7 @@
 </template>
 
 <script>
-
 export default {
-    name:'BoletoView',  
-}
-
+    name: "TicketView",
+};
 </script>

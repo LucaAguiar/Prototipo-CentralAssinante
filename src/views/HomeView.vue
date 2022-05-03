@@ -1,34 +1,36 @@
 <template>
-    <div class="home">
+    <div>
         <router-view></router-view>
-        <b-button id="exit" type="submit" @click="navigationExit()"><b-icon-reply-all-fill></b-icon-reply-all-fill> Sair </b-button>
-        <b-button id="menu" type="submit" @click="navigationMenu()" v-if="showButton"><b-icon-menu-button></b-icon-menu-button> Menu </b-button>
+        <b-button type="submit" @click="navigationExit()"
+            ><b-icon-reply-all-fill></b-icon-reply-all-fill> Sair
+        </b-button>
+        <b-button type="submit" @click="navigationMenu()" v-if="showButton"
+            ><b-icon-menu-button></b-icon-menu-button> Menu
+        </b-button>
     </div>
 </template>
 
 <script>
-
 export default {
-    name:'HomeView',
-    data(){
+    name: "HomeView",
+    data() {
         return {
-            showButton: true,
-        }
+            showButton: false,
+        };
     },
     methods: {
-        navigationMenu: function() {
-            this.$router.push('/menu')
+        navigationMenu: function () {
+            this.$router.push("/menu");
         },
-        navigationExit: function() {
-            this.$router.push('/')
-        }
+        navigationExit: function () {
+            this.$router.push("/");
+        },
     },
-}
-
+};
 </script>
 
 <style scoped>
-button{
+button {
     width: 200px;
     height: 56px;
     background-color: #363636 !important;
@@ -36,7 +38,7 @@ button{
     margin: 40px 30px 0 30px;
     float: flex;
 }
-button:hover{
+button:hover {
     background-color: #000000 !important;
 }
 </style>

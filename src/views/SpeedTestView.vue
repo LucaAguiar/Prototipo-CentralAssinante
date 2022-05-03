@@ -5,9 +5,7 @@
 </template>
 
 <script>
-
 export default {
-    name:'TesteVelocidadeView'
-}
-    
+    name: "SpeedTestView",
+};
 </script>
