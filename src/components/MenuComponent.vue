@@ -4,7 +4,7 @@
             <div class="container-logo">
                 <b-icon :icon="icon" scale="2.5"></b-icon>
             </div>
-            <div class="descrição">
+            <div class="description">
                 <h4>{{ name }}</h4>
             </div>
         </div>
@@ -69,7 +69,7 @@ body {
     color: white;
 }
 
-.descrição {
+.description {
     color: white;
     display: flex;
     flex: 0 0 150px;
@@ -87,7 +87,7 @@ body {
     .container-logo {
         margin: auto;
     }
-    .descrição {
+    .description {
         margin: auto;
     }
 }

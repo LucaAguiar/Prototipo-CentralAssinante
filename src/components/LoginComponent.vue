@@ -8,24 +8,16 @@
                 <br />
 
                 <b-col sm="15">
-                    <b-form-input
-                        id="input-1"
-                        :type="'email'"
-                        placeholder="Username:"
-                    ></b-form-input>
+                    <b-form-input placeholder="Username:" :type="'email'"></b-form-input>
 
                     <br />
                     <br />
 
-                    <b-form-input
-                        id="input-2"
-                        placeholder="Password: "
-                        :type="'password'"
-                    ></b-form-input>
+                    <b-form-input placeholder="Password: " :type="'password'"></b-form-input>
 
                     <br />
 
-                    <b-button id="submit" type="submit" variant="primary" @click="navigationMenu()">Sign In</b-button>
+                    <b-button type="submit" @click="navigationMenu()">Sign In</b-button>
 
                     <br />
                     <br />
