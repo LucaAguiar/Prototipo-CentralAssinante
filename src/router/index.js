@@ -1,14 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import LoginView from "../views/MainPages/LoginView.vue";
-import HomeView from "../views/MainPages/HomeView.vue";
-import MenuView from "../views/MainPages/MenuView.vue";
-import SpeedTestView from "../views/SubMenuPages/SpeedTestView.vue";
-import SupportView from "../views/SubMenuPages/SupportView.vue";
-import NotificationsView from "../views/SubMenuPages/NotificationsView.vue";
-import ChargesView from "../views/SubMenuPages/ChargesView.vue";
-import ChargesPaidView from "../views/SubMenuPages/ ChargesPaidView.vue";
-import TicketView from "../views/SubMenuPages/TicketView.vue";
+import LoginView from "@/views/LoginPage/LoginPage.vue";
+import HomeView from "@/views/HomePage.vue";
+import MenuView from "@/views/MenuPage/MenuPage.vue";
+import SpeedTestView from "@/views/SubMenuPages/SpeedTestPage.vue";
+import SupportView from "@/views/SubMenuPages/SupportPage.vue";
+import NotificationsView from "@/views/SubMenuPages/NotificationsPage.vue";
+import ChargesView from "@/views/SubMenuPages/ChargesPage.vue";
+import ChargesPaidView from "@/views/SubMenuPages/ChargesPaidPage.vue";
+import TicketView from "@/views/SubMenuPages/TicketPage.vue";
 
 Vue.use(VueRouter);
 

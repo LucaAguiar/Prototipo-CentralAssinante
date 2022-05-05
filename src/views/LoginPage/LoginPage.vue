@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import LoginComponent from "@/components/LoginComponent.vue";
+import LoginComponent from "./LoginComponent.vue";
 
 export default {
     name: "LoginView",
