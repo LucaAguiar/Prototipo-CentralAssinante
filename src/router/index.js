@@ -20,12 +20,12 @@ const routes = [
     },
     {
         path: "/menu",
-        name: "home",
+        name: "menu",
         component: HomeView,
         children: [
             {
                 path: "",
-                name: "menu",
+                name: "home",
                 component: MenuView,
             },
             {

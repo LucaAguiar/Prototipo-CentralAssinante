@@ -1,11 +1,8 @@
 <template>
     <div>
         <router-view></router-view>
-        <b-button type="submit" @click="navigationMenu()" v-if="routeValidate"
-            ><b-icon-menu-button></b-icon-menu-button> Menu </b-button
-        ><b-button type="submit" @click="navigationExit()"
-            ><b-icon-reply-all-fill></b-icon-reply-all-fill> Sair
-        </b-button>
+        <b-button type="submit" @click="navigationMenu()" v-if="routeValidate"> <b-icon-menu-button /> Menu </b-button>
+        <b-button type="submit" @click="navigationExit()"> <b-icon-reply-all-fill /> Sair </b-button>
     </div>
 </template>
 
@@ -22,7 +19,7 @@ export default {
     },
     computed: {
         routeValidate: function () {
-            return this.$route.path == "/menu" ? false : true;
+            return this.$route.path === "/menu" ? false : true;
         },
     },
 };
