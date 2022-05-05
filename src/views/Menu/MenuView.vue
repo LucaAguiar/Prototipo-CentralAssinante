@@ -5,14 +5,13 @@
             <MenuComponent icon="wrench" name="Suporte" @click="navigation('support')" />
             <MenuComponent icon="bell-fill" name="Notificações" @click="navigation('notifications')" />
             <MenuComponent icon="ui-checks-grid" name="Cobranças" @click="navigation('charges')" />
-            <MenuComponent icon="ui-checks" name="Cobranças Pagas" @click="navigation('chargespaid')" />
-            <MenuComponent icon="upc-scan" name="2ª via do boleto" @click="navigation('ticket')" />
+            <MenuComponent icon="upc-scan" name="2ª via do boleto" @click="navigation('tickets')" />
         </div>
     </div>
 </template>
 
 <script>
-import MenuComponent from "./MenuComponent.vue";
+import MenuComponent from "./ButtonComponent.vue";
 
 export default {
     name: "MenuView",

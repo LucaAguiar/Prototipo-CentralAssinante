@@ -6,6 +6,6 @@
 
 <script>
 export default {
-    name: "SpeedTestView",
+    name: "SpeedTest",
 };
 </script>

@@ -1,14 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import LoginView from "@/views/LoginPage/LoginPage.vue";
-import HomeView from "@/views/HomePage.vue";
-import MenuView from "@/views/MenuPage/MenuPage.vue";
-import SpeedTestView from "@/views/SubMenuPages/SpeedTestPage.vue";
-import SupportView from "@/views/SubMenuPages/SupportPage.vue";
-import NotificationsView from "@/views/SubMenuPages/NotificationsPage.vue";
-import ChargesView from "@/views/SubMenuPages/ChargesPage.vue";
-import ChargesPaidView from "@/views/SubMenuPages/ChargesPaidPage.vue";
-import TicketView from "@/views/SubMenuPages/TicketPage.vue";
+import LoginView from "@/views/Login/LoginView.vue";
+import HomeView from "@/views/HomeView.vue";
+import MenuView from "@/views/Menu/MenuView.vue";
+import SpeedTestView from "@/views/SubMenu/SpeedTestView.vue";
+import SupportView from "@/views/SubMenu/SupportView.vue";
+import NotificationsView from "@/views/SubMenu/NotificationsView.vue";
+import ChargesView from "@/views/SubMenu/ChargesView.vue";
+import TicketsView from "@/views/SubMenu/TicketsView.vue";
 
 Vue.use(VueRouter);
 
@@ -49,14 +48,9 @@ const routes = [
                 component: ChargesView,
             },
             {
-                path: "chargespaid",
-                name: "chargespaid",
-                component: ChargesPaidView,
-            },
-            {
-                path: "ticket",
-                name: "ticket",
-                component: TicketView,
+                path: "tickets",
+                name: "tickets",
+                component: TicketsView,
             },
         ],
     },

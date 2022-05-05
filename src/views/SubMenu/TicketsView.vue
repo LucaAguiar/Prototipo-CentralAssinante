@@ -6,6 +6,6 @@
 
 <script>
 export default {
-    name: "TicketView",
+    name: "TicketsView",
 };
 </script>
