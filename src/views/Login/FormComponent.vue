@@ -8,16 +8,16 @@
                 <br />
 
                 <b-col sm="15">
-                    <b-form-input placeholder="Username:" :type="'email'"></b-form-input>
+                    <b-form-input v-model="login.username" placeholder="Username:" :type="'email'"></b-form-input>
 
                     <br />
                     <br />
 
-                    <b-form-input placeholder="Password: " :type="'password'"></b-form-input>
+                    <b-form-input v-model="login.password" placeholder="Password: " :type="'password'"></b-form-input>
 
                     <br />
 
-                    <b-button type="submit" @click="navigationMenu()">Sign In</b-button>
+                    <b-button type="submit" @click="requestToken()">Sign In</b-button>
 
                     <br />
                     <br />
@@ -30,13 +30,38 @@
 </template>
 
 <script>
+import axios from "axios";
+import myAxios from "../../mixins/myAxiosMixin"
+
 export default {
     name: "LoginComponent",
+    data: function () {
+        return {
+            login: {
+                username: "13345271052",
+                password: "e10adc3949ba59abbe56e057f20f883e",
+            },
+            accesstoken: null
+        };
+    },
     methods: {
-        navigationMenu: function () {
-            this.$router.push("/menu");
+        requestToken: function () {
+            axios
+                .post(`/auth/login`, this.login)
+                .then((response) => {
+                    this.accesstoken = response.data.access_token
+                    localStorage.setItem('access_token', response.data.access_token)
+                    localStorage.setItem('refresh_token', response.data.refresh_token)
+
+                    console.log(this.accesstoken)
+                    console.log(localStorage.getItem('access_token'))
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         },
     },
+    mixins: [myAxios]
 };
 </script>
 
