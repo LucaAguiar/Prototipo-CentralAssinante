@@ -1,34 +1,33 @@
 import Axios from "axios";
-
+import { auth } from "../auth/auth";
 
 const axios = Axios.create({
-    baseURL: "/api/admin"
-    //onUploadProgress: function(progressEvent) {},
-    //onDownloadProgress: function(progressEvent) {}
+    baseURL: "/v2/api",
 });
 
 axios.interceptors.request.use(
-    function(config) {
-        config["headers"]["Authorization"] = `Bearer ${store.getters["Auth/authToken"]}`;
-        if (axios.showLoader) {
-            store.dispatch("Loader/startLoading");
+    function (config) {
+        const authToken = auth.authByLocalToken();
+        if (authToken) {
+            config["headers"]["Authorization"] = `Bearer ${authToken}`;
         }
         return config;
     },
-    function(error) {
-        store.dispatch("Loader/endLoading");
+    function (error) {
         return Promise.reject(error);
     }
 );
 
-axios
-    .post(`/auth/refresh`, localStorage.getItem("refresh_token"))
-    .then((response) => {
-        localStorage.setItem("access_token", response.data.access_token);
-        localStorage.setItem("refresh_token", response.data.refresh_token);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+axios.interceptors.response.use(
+    function (response) {
+        return response;
+    },
+    function (error) {
+        if (error.response.status === 401) {
+            auth.logout();
+            return Promise.reject(error);
+        }
+    }
+);
 
 export default axios;

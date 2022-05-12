@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { auth } from "../auth/auth";
 export default {
     name: "HomeView",
     methods: {
@@ -14,7 +15,7 @@ export default {
             this.$router.push("/menu");
         },
         navigationExit: function () {
-            this.$router.push("/");
+            auth.logout();
         },
     },
     computed: {

@@ -8,17 +8,16 @@
                 <br />
 
                 <b-col sm="15">
-                    <b-form-input v-model="login.username" placeholder="Username:" :type="'email'"></b-form-input>
+                    <b-form-input v-model="username" placeholder="Username:" :type="'email'"></b-form-input>
 
                     <br />
                     <br />
 
-                    <b-form-input v-model="login.password" placeholder="Password: " :type="'password'"></b-form-input>
+                    <b-form-input v-model="password" placeholder="Password: " :type="'password'"></b-form-input>
 
                     <br />
 
-                    <b-button type="submit" @click="requestToken()">Sign In</b-button>
-
+                    <b-button type="submit" @click="requestAccessToken()">Token</b-button>
                     <br />
                     <br />
 
@@ -30,37 +29,23 @@
 </template>
 
 <script>
-import axios from "axios";
-//import myAxios from "../../mixins/myAxiosMixin"
+import { auth } from "../../auth/auth";
 
 export default {
     name: "LoginComponent",
-    data: function () {
+    data() {
         return {
-            login: {
-                username: "13345271052",
-                password: "e10adc3949ba59abbe56e057f20f883e",
-            },
-            accessToken: null
+            username: "13345271052",
+            password: "e10adc3949ba59abbe56e057f20f883e",
         };
     },
     methods: {
-        requestToken: function () {
-            axios
-                .post(`/auth/login`, this.login)
-                .then((response) => {
-                    this.accessToken = response.data.access_token
-                    localStorage.setItem('access_token', response.data.access_token)
-                    localStorage.setItem('refresh_token', response.data.refresh_token)
-                    console.log(this.accessToken)
-                    console.log(localStorage.getItem('access_token'))
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+        requestAccessToken: function () {
+            auth.requestAccessToken(this.username, this.password)
+                .then(() => this.$router.push("/menu"))
+                .catch((err) => console.log(err));
         },
     },
-   // mixins: [myAxios]
 };
 </script>
 
