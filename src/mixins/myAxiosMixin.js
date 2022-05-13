@@ -9,8 +9,8 @@ axios.interceptors.request.use(
     function (config) {
         const authToken = auth.authByLocalToken();
         if (authToken) {
-            config["headers"]["Authorization"] = `Bearer ${authToken}`;
-        }
+            config["headers"]["Authorization"] = `Bearer ${authToken}`;        
+        } 
         return config;
     },
     function (error) {

@@ -41,7 +41,7 @@ export default {
     },
     methods: {
         requestAccessToken: function () {
-            auth.requestAccessToken(this.username, this.password)
+            auth.requestAccessTokenByPassword(this.username, this.password)
                 .then(() => this.$router.push("/menu"))
                 .catch((err) => console.log(err));
         },

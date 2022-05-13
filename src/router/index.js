@@ -6,8 +6,8 @@ import MenuView from "@/views/Menu/MenuView.vue";
 import SpeedTestView from "@/views/SubMenu/SpeedTestView.vue";
 import SupportView from "@/views/SubMenu/SupportView.vue";
 import NotificationsView from "@/views/SubMenu/NotificationsView.vue";
+import BillsView from "@/views/SubMenu/BillsView.vue";
 import ChargesView from "@/views/SubMenu/ChargesView.vue";
-import TicketsView from "@/views/SubMenu/TicketsView.vue";
 
 Vue.use(VueRouter);
 
@@ -43,14 +43,14 @@ const routes = [
                 component: NotificationsView,
             },
             {
+                path: "bills",
+                name: "bills",
+                component: BillsView,
+            },
+            {
                 path: "charges",
                 name: "charges",
                 component: ChargesView,
-            },
-            {
-                path: "tickets",
-                name: "tickets",
-                component: TicketsView,
             },
         ],
     },
