@@ -15,6 +15,11 @@ import MenuComponent from "./ButtonComponent.vue";
 
 export default {
     name: "MenuView",
+    data: function () {
+        return {
+            interval: null,
+        };
+    },
     components: {
         MenuComponent,
     },

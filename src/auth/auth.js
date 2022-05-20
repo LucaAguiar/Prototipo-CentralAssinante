@@ -1,18 +1,27 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import router from "../router/index";
 
+const refreshTokenInterval = 3540000; //Milliseconds
+let interval = null;
+
+function requestAccessTokenByPassword(username, password) {
+    return axios
+        .post(`/auth/login`, { username, password })
+        .then((response) => {
+            saveLocalToken(response.data.access_token, response.data.refresh_token, response.data.expires_in);
+            interval = setInterval(() => this.requestAccessTokenByRefresh(), refreshTokenInterval);
+            return Promise.resolve();
+        })
+        .catch((error) => {
+            this.logout();
+            return Promise.reject(error);
+        });
+}
+
 function authByLocalToken() {
     const accessToken = retrieveLocalAccessToken();
-    if (accessToken) {
-        return accessToken;
-    }
-
-    return requestAccessTokenByRefresh()
-        .then(() => {
-            const accessToken = localStorage.getItem("access_token");
-            return accessToken;
-        })
-        .catch((error) => console.log(error));
+    return accessToken;
 }
 
 function authByRefreshToken() {
@@ -22,6 +31,7 @@ function authByRefreshToken() {
 function logout() {
     localStorage.clear();
     router.push("/");
+    clearInterval(interval);
 }
 
 function saveLocalToken(access_token, refresh_token, expires_in) {
@@ -52,21 +62,9 @@ function requestAccessTokenByRefresh() {
         });
 }
 
-function requestAccessTokenByPassword(username, password) {
-    return axios
-        .post(`/auth/login`, { username, password })
-        .then((response) => {
-            saveLocalToken(response.data.access_token, response.data.refresh_token, response.data.expires_in - 4000);
-            return Promise.resolve();
-        })
-        .catch((error) => {
-            this.logout();
-            return Promise.reject(error);
-        });
-}
-
 export const auth = {
     authByLocalToken,
     requestAccessTokenByPassword,
+    requestAccessTokenByRefresh,
     logout,
 };

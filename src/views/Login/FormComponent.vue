@@ -17,7 +17,7 @@
 
                     <br />
 
-                    <b-button type="submit" @click="requestAccessToken()">Token</b-button>
+                    <b-button type="submit" @click="requestAccessToken()">Sign In</b-button>
                     <br />
                     <br />
 
@@ -30,18 +30,31 @@
 
 <script>
 import { auth } from "../../auth/auth";
+const CryptoJS = require("crypto-js");
 
 export default {
     name: "LoginComponent",
     data() {
         return {
-            username: "13345271052",
-            password: "e10adc3949ba59abbe56e057f20f883e",
+            username: "58553711072",
+            password: "123456789",
+            validUsername: null,
+            encryptedPassword: null,
         };
     },
     methods: {
+        validateUsername: function () {
+            this.validUsername = this.username.replace(/\D/g, "");
+            return this.validUsername;
+        },
+        encryptPassword: function () {
+            this.encryptedPassword = CryptoJS.MD5(this.password).toString();
+            return this.encryptedPassword;
+        },
         requestAccessToken: function () {
-            auth.requestAccessTokenByPassword(this.username, this.password)
+            this.validateUsername();
+            this.encryptPassword();
+            auth.requestAccessTokenByPassword(this.validUsername, this.encryptedPassword)
                 .then(() => this.$router.push("/menu"))
                 .catch((err) => console.log(err));
         },

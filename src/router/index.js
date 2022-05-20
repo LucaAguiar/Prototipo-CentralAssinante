@@ -6,7 +6,7 @@ import MenuView from "@/views/Menu/MenuView.vue";
 import SpeedTestView from "@/views/SubMenu/SpeedTestView.vue";
 import SupportView from "@/views/SubMenu/SupportView.vue";
 import NotificationsView from "@/views/SubMenu/NotificationsView.vue";
-import BillsView from "@/views/SubMenu/BillsView.vue";
+import BillsView from "@/views/SubMenu/Bills/BillsView.vue";
 import ChargesView from "@/views/SubMenu/ChargesView.vue";
 
 Vue.use(VueRouter);
