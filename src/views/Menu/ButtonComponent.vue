@@ -30,7 +30,7 @@ body {
     display: flex;
 }
 .org-card {
-    width: 300px;
+    width: 240px;
     height: 180px;
 }
 .container-card {
@@ -39,21 +39,14 @@ body {
     flex: 0 0 180px;
     margin: 10px 10px 0 10px;
 
-    background-color: #363636;
-    box-shadow: 5px 5px #000;
+    background-color: rgb(118, 118, 118);
 
     border-radius: 10px;
     border-color: #000;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
 
     align-items: center;
-}
-
-.container-card:hover {
-    background-color: #000000 !important;
-    width: 97%;
-    height: 94%;
 }
 
 .container-logo {
@@ -72,15 +65,18 @@ body {
 .description {
     color: white;
     display: flex;
-    flex: 0 0 150px;
+    flex: 0 0 60%;
     justify-content: center;
     margin-top: 20px;
 }
 
-@media (max-width: 623px) {
+@media (max-width: 767px) {
+    .org-card {
+        width: 98%;
+        height: 150px;
+    }
     .container-card {
         height: 85%;
-        flex: 0 0 auto;
         display: flex;
         text-align: center;
     }

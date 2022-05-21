@@ -3,25 +3,21 @@
         <div class="container-login">
             <b-container fluid>
                 <br />
-                <h1>Sign In</h1>
-
+                <h1>Central Do Assinante</h1>
                 <br />
 
                 <b-col sm="15">
-                    <b-form-input v-model="username" placeholder="Username:" :type="'email'"></b-form-input>
+                    <b-form-input v-model="username" placeholder="CPF / CNPJ:" :type="'email'"></b-form-input>
 
                     <br />
-                    <br />
+                    <div class="password" v-if="showPassword">
+                        <b-form-input v-model="password" placeholder="Senha: " :type="'password'"></b-form-input>
 
-                    <b-form-input v-model="password" placeholder="Password: " :type="'password'"></b-form-input>
+                        <a href="#">Esqueci Minha Senha</a>
+                    </div>
 
+                    <b-button type="submit" @click="requestAccessToken()">Entrar</b-button>
                     <br />
-
-                    <b-button type="submit" @click="requestAccessToken()">Sign In</b-button>
-                    <br />
-                    <br />
-
-                    <p>Don't have an account? <a href="#">Create an account here.</a></p>
                 </b-col>
             </b-container>
         </div>
@@ -40,6 +36,7 @@ export default {
             password: "123456789",
             validUsername: null,
             encryptedPassword: null,
+            showPassword: true,
         };
     },
     methods: {
@@ -63,10 +60,18 @@ export default {
 </script>
 
 <style scoped>
+.container > img {
+    width: 300px;
+    height: 80px;
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
 .container {
     max-width: 650px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 50px;
 }
 .container-login {
@@ -74,31 +79,30 @@ export default {
     align-items: center;
     height: 90%;
     width: 90%;
-    background-color: #f8f8ff;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: #363636;
-    border-width: 2px;
+}
+.password {
+    display: flex;
+    flex-direction: column;
+}
+.password > a {
+    text-align: end;
+    margin-bottom: 20px;
 }
 input {
     height: 52px;
     align-items: center;
 }
 button {
-    width: 200px;
+    min-width: 200px;
+    max-width: 400px;
     height: 56px;
-    background-color: #363636 !important;
-    border: none !important;
 }
-button:hover {
-    background-color: #000000 !important;
-}
-a {
-    color: #000 !important;
-}
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     .container-login {
         width: 98%;
+    }
+    button {
+        min-width: 170px;
     }
 }
 </style>

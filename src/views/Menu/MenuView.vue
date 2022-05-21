@@ -6,6 +6,9 @@
             <MenuComponent icon="bell-fill" name="Notificações" @click="navigation('notifications')" />
             <MenuComponent icon="ui-checks-grid" name="Cobranças" @click="navigation('bills')" />
             <MenuComponent icon="upc-scan" name="2ª via do boleto" @click="navigation('charges')" />
+            <MenuComponent icon="telephone-fill" name="Alterar Contatos" @click="navigation('support')" />
+            <MenuComponent icon="key-fill" name="Liberar Conexão" @click="navigation('support')" />
+            <MenuComponent icon="percent" name="Quanto Já Usei" @click="navigation('support')" />
         </div>
     </div>
 </template>
@@ -33,11 +36,15 @@ export default {
 
 <style scoped>
 .container {
-    max-width: 800px;
-    margin: auto;
+    width: 93%;
     display: flex;
     flex-wrap: wrap;
-    align-content: baseline;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+@media (max-width: 767px) {
+    .container {
+        width: 100%;
+    }
 }
 </style>
