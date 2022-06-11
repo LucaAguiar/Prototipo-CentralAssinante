@@ -4,52 +4,56 @@ import LoginView from "@/views/Login/LoginView.vue";
 import HomeView from "@/views/HomeView.vue";
 import MenuView from "@/views/Menu/MenuView.vue";
 import SpeedTestView from "@/views/SubMenu/SpeedTestView.vue";
-import SupportView from "@/views/SubMenu/SupportView.vue";
 import NotificationsView from "@/views/SubMenu/NotificationsView.vue";
-import BillsView from "@/views/SubMenu/Bills/BillsView.vue";
+import ListBillsView from "@/views/SubMenu/Bills/ListBills/ListBillsView.vue";
+import BillsMainView from "@/views/SubMenu/Bills/BillsMainView.vue";
 import ChargesView from "@/views/SubMenu/ChargesView.vue";
+import PixMethod from "@/views/SubMenu/Bills/PaymentMethods/PixView.vue";
+import BarCodeMethod from "@/views/SubMenu/Bills/PaymentMethods/BarCodeView.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
     {
         path: "/",
-        name: "login",
         component: LoginView,
     },
     {
         path: "/menu",
-        name: "menu",
         component: HomeView,
         children: [
             {
                 path: "",
-                name: "home",
                 component: MenuView,
             },
             {
                 path: "speedtest",
-                name: "speedtest",
                 component: SpeedTestView,
             },
             {
-                path: "support",
-                name: "support",
-                component: SupportView,
-            },
-            {
                 path: "notifications",
-                name: "notifications",
                 component: NotificationsView,
             },
             {
                 path: "bills",
-                name: "bills",
-                component: BillsView,
+                component: BillsMainView,
+                children: [
+                    {
+                        path: "",
+                        component: ListBillsView,
+                    },
+                    {
+                        path: "pix/:id",
+                        component: PixMethod,
+                    },
+                    {
+                        path: "barcode/:id",
+                        component: BarCodeMethod,
+                    },
+                ],
             },
             {
                 path: "charges",
-                name: "charges",
                 component: ChargesView,
             },
         ],

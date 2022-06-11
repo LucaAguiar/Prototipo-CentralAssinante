@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import router from "../router/index";
 
-const refreshTokenInterval = 3540000; //Milliseconds
+const refreshTokenInterval = 300000; //Milliseconds
 let interval = null;
 
 function requestAccessTokenByPassword(username, password) {
@@ -62,9 +61,18 @@ function requestAccessTokenByRefresh() {
         });
 }
 
+function formatCurrencyValue(value) {
+    return new Intl.NumberFormat("pt-br", {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+    }).format(value);
+}
+
 export const auth = {
     authByLocalToken,
     requestAccessTokenByPassword,
     requestAccessTokenByRefresh,
     logout,
+    formatCurrencyValue,
 };

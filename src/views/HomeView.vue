@@ -1,16 +1,20 @@
 <template>
     <div class="container">
-        <div class="top">
-            <img
-                src="https://blog.smsnet.com.br/wp-content/uploads/2020/10/ispfy_logomarca.png"
-                alt="logo-cliente"
-            /><b-button type="submit" @click="navigationExit()"> <b-icon-reply-all-fill /> Sair </b-button>
+        <div class="header">
+            <img src="https://blog.smsnet.com.br/wp-content/uploads/2020/10/ispfy_logomarca.png" alt="logo-cliente" />
+            <div class="header-buttons">
+                <b-button type="submit" class="buttonHome" @click="navigationMenu()" v-if="routeValidate">
+                    <b-icon-house />
+                </b-button>
+                <b-button type="submit" class="buttonExit" @click="navigationExit()">
+                    Desconectar <b-icon-person-fill />
+                </b-button>
+            </div>
         </div>
-        <div class="page">
+        <div class="body">
             <router-view></router-view>
         </div>
-        <b-button type="submit" @click="navigationMenu()" v-if="routeValidate"> <b-icon-menu-button /> Menu </b-button>
-        <div class="contato">
+        <div class="footer">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint et labore laudantium facilis explicabo
                 laboriosam. Rem beatae id odio, non harum error iure, tempore dolores vero repellat consequatur
@@ -34,7 +38,7 @@ export default {
     },
     computed: {
         routeValidate: function () {
-            return this.$route.path === "/menu" ? false : true;
+            return this.$route?.path !== "/menu";
         },
     },
 };
@@ -43,38 +47,69 @@ export default {
 <style scoped>
 .container {
     display: flex;
+    min-width: 280px;
+    max-width: 1000px;
     flex-direction: column;
     min-height: 100vh;
-}
-.page {
     margin: auto;
-    margin: 0 0 15px 0;
+    padding: 0;
 }
-.contato {
+.footer {
     margin: auto;
     min-width: 100px;
     max-width: 300px;
     margin-bottom: 15px;
     margin-top: 50px;
 }
-.top {
+.header {
     display: flex;
+    background-color: white;
     justify-content: space-between;
-    margin: 15px 0 15px 0;
+    flex-shrink: 0;
+    margin: 5px;
 }
-.top > img {
-    min-width: 150px;
-    max-width: 300px;
+
+.header > img {
+    min-width: 120px;
+    max-width: 220px;
     margin-right: 20px;
     border-radius: 15px;
 }
-button {
-    width: 200px;
-    height: 55px;
-    float: flex;
+.header-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 100px;
+    width: 300px;
+    max-width: 400px;
 }
-@media (max-width: 767px) {
-    .contato {
+.buttonExit,
+.buttonHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100px;
+    max-width: 125px;
+    height: 35px;
+    font-size: 14px;
+    margin: 3px;
+}
+.buttonHome {
+    min-width: 30px;
+    max-width: 40px;
+}
+
+@media (max-width: 380px) {
+    .buttonHome {
+        height: 26px;
+        font-size: 10px;
+    }
+    .buttonExit {
+        min-width: 70px;
+        height: 26px;
+        font-size: 10px;
+    }
+    .footer {
         margin-top: 0;
     }
 }

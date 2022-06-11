@@ -7,7 +7,7 @@
                 <br />
 
                 <b-col sm="15">
-                    <b-form-input v-model="username" placeholder="CPF / CNPJ:" :type="'email'"></b-form-input>
+                    <b-form-input v-model="username" placeholder="CPF / CNPJ:" :type="'text'"></b-form-input>
 
                     <br />
                     <div class="password" v-if="showPassword">
@@ -53,7 +53,7 @@ export default {
             this.encryptPassword();
             auth.requestAccessTokenByPassword(this.validUsername, this.encryptedPassword)
                 .then(() => this.$router.push("/menu"))
-                .catch((err) => console.log(err));
+                .catch(() => auth.logout());
         },
     },
 };
@@ -102,7 +102,7 @@ button {
         width: 98%;
     }
     button {
-        min-width: 170px;
+        min-width: 130px;
     }
 }
 </style>
